@@ -1,5 +1,12 @@
 .Card{
   height: 30%;
   width: 80%;
-  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(251, 188, 70, 0.664);
+  margin: 3rem;
+  padding: 3%;
+  border-radius: 6px;
 }

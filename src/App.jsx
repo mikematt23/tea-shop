@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import Header from './components/Header/Header'
 import Card from './components/UI/Card/Card'
 import './App.css'
+import Header from './components/Header/Header'
 import "./index.css"
 
 function App() {
   return (
     <>
-      <Header/>
+    <Header/>
+    <Card>
       <h2>Welcome</h2>
-      <Card>
-        <h3>Working</h3>
-      </Card>
+    </Card>
     </>
   )
 }
