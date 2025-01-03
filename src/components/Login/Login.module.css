@@ -1,0 +1,10 @@
+.inputHolder{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.buttonHolder{
+  display: flex;
+  align-items: center;
+}
