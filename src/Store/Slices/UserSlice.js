@@ -7,7 +7,7 @@ export const UserSlice = createSlice({
     userName:"",
     password:"",
     address:"",
-    isLoggedIn: false
+    isLoggedIn: FontFaceSetLoadEvent
   },
   reducers:{
     setUser : (state, action)=>{

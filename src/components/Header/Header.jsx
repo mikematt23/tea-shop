@@ -1,10 +1,18 @@
 import style from "./Header.module.css"
 import { Link } from "react-router"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { showCart } from "../../Store/Slices/CartSlice"
+import { createPortal } from "react-dom"
+import Cart from "../Cart/Cart"
 
 const Header = ({})=>{
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const showCart2 = useSelector(state =>state.cart.showCart) 
+  const dispatch = useDispatch()
 
+  const handleCart = ()=>{
+    dispatch(showCart())
+  }
   return(
     <header className={style.header}>
       <h1>Tea Shop</h1>
@@ -18,8 +26,8 @@ const Header = ({})=>{
           </li>
         </ul>}
         {isLoggedIn&& <ul>
-          <li>
-           <Cart></Cart>
+          <li onClick={handleCart}>
+            <p>Cart</p>
           </li>
           <li>
             products
@@ -29,6 +37,10 @@ const Header = ({})=>{
           </li>
         </ul>}
       </nav>
+      {showCart2 && createPortal(
+       <Cart/>,
+       document.getElementById('modal')
+      )}
     </header>
   )
 }
