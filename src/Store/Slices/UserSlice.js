@@ -11,14 +11,23 @@ export const UserSlice = createSlice({
   },
   reducers:{
     setUser : (state, action)=>{
-      console.log(action)
-       state.userName = action.payload
+       state.userName = action.payload.userName
+       state.password = action.payload.password
+       state.address = action.payload.address
+       state.isLoggedIn = true
     },
     setAddress : (state,action)=>{
       return state.address = action.payload
+    },
+    logOut: (state)=>{
+      state.userName = ''
+      state.password = ''
+      state.address = ''
+      state.isLoggedIn = false
+      
     }
   }
 })
 
-export const {setUser} = UserSlice.actions
+export const {setUser, setAddress, logOut} = UserSlice.actions
 export default UserSlice.reducer
