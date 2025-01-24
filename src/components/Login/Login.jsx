@@ -3,20 +3,36 @@ import Card from "../UI/Card/Card.jsx"
 import Header from "../Header/Header.jsx"
 import Input from "../UI/Input/Input.jsx"
 import Button from "../UI/Button/Button.jsx"
+import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx"
+import { useState } from "react"
+import { showError } from "../../Store/Slices/ErrorSlice.js"
+import { createPortal } from "react-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { setUser } from "../../Store/Slices/UserSlice.js"
 import { useRef } from "react"
 
 
+
 const Login = ({})=>{
   const userNameRef = useRef()
   const passwordRef = useRef()
-  const user = useSelector(state => state.user)
-  const dispatch = useDispatch()
+  
+  const [message, setMesage] = useState("")
 
+  const user = useSelector(state => state.user)
+  const error = useSelector(state => state.error.showError)
+  const dispatch = useDispatch()
+ 
   const handleLogIn = (e)=>{
+    if(
+        userNameRef.current.value === '' || 
+        passwordRef.current.value === ""
+    ){
+      setMesage("You must enter a user name and password")
+      return dispatch(showError())
+    }
     
-    //http request to see if input come back to a user
+    fetch()
     dispatch(setUser(userNameRef.current.value))
   }
 
@@ -26,6 +42,10 @@ const Login = ({})=>{
   }
   return(
     <>
+    {error && createPortal(
+      <ErrorMessage message={message}/>,
+      document.getElementById('error')
+    )}
       <Header/>
       <Card>
         <h2>Please Log in or sign up</h2>

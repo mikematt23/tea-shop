@@ -6,14 +6,12 @@ export const UserSlice = createSlice({
   initialState:{
     userName:"",
     password:"",
-    address:"",
-    isLoggedIn: FontFaceSetLoadEvent
+    isLoggedIn: false
   },
   reducers:{
     setUser : (state, action)=>{
        state.userName = action.payload.userName
        state.password = action.payload.password
-       state.address = action.payload.address
        state.isLoggedIn = true
     },
     setAddress : (state,action)=>{
@@ -22,7 +20,6 @@ export const UserSlice = createSlice({
     logOut: (state)=>{
       state.userName = ''
       state.password = ''
-      state.address = ''
       state.isLoggedIn = false
       
     }

@@ -30,7 +30,7 @@ const Header = ({})=>{
             <p>Cart</p>
           </li>
           <li>
-            products
+            <Link to="/products">Products</Link>
           </li>
           <li>
            log out
