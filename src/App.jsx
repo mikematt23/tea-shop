@@ -10,6 +10,7 @@ function App() {
     <Header/>
     <Card>
       <h2>Welcome</h2>
+      <h3>Please login or sign up to browser our delicious teas.</h3>
     </Card>
     </>
   )

@@ -4,42 +4,61 @@ import Header from "../Header/Header.jsx"
 import Input from "../UI/Input/Input.jsx"
 import Button from "../UI/Button/Button.jsx"
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx"
-import { useState } from "react"
+
 import { showError } from "../../Store/Slices/ErrorSlice.js"
+import { setUser } from "../../Store/Slices/UserSlice.js"
+
+import { useState,useRef } from "react"
 import { createPortal } from "react-dom"
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from "../../Store/Slices/UserSlice.js"
-import { useRef } from "react"
+import { useNavigate } from "react-router"
+
+
 
 
 
 const Login = ({})=>{
+  
   const userNameRef = useRef()
   const passwordRef = useRef()
   
   const [message, setMesage] = useState("")
 
-  const user = useSelector(state => state.user)
   const error = useSelector(state => state.error.showError)
   const dispatch = useDispatch()
  
-  const handleLogIn = (e)=>{
-    if(
-        userNameRef.current.value === '' || 
-        passwordRef.current.value === ""
-    ){
+  const handleLogIn = async (e)=>{
+    if(userNameRef.current.value === '' || 
+        passwordRef.current.value === "")
+    {
       setMesage("You must enter a user name and password")
       return dispatch(showError())
     }
+    const response = await fetch("http://localhost:3000/teaLogin",{
+      method:"post",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        userName:`${userNameRef.current.value}`,
+        password: `${passwordRef.current.value}`
+      })
+    })
+    const json = await response.json()
+    //when errors occur 
+    if(json.message === "No user"){
+      setMesage("No User Please Sgn Up to Continue")
+      return dispatch(showError())
+    }
+    if(json.message === "Incorrect"){
+      setMesage("Password does not match our records")
+      return dispatch(showError())
+    }
+    //what should happen with no errors
+    dispatch(setUser(json.user))
+    navigate("/products")
     
-    fetch()
-    dispatch(setUser(userNameRef.current.value))
   }
 
-  const handleSignUp = ()=>{
-    //navagate to sign up component thru react router
-    console.log("at sign up")
-  }
+
   return(
     <>
     {error && createPortal(
@@ -55,7 +74,7 @@ const Login = ({})=>{
         </div>
         <div className={style.buttonHolder}>
           <Button onClick={handleLogIn}>Login</Button>
-          <Button onClick={handleSignUp}>Sign Up</Button>
+       
         </div>
       </Card>
     </>
