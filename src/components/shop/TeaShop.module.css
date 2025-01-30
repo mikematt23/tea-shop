@@ -1,0 +1,21 @@
+.gridHolder{
+    width: 70%;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    overflow: scroll;
+}
+
+.gridItem{
+    height: 80%;
+    padding: 1rem;
+    width: 90%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+.gridHolder::-webkit-scrollbar {
+    background: transparent; /* make scrollbar transparent */
+    width: 0px;
+}

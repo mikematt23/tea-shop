@@ -1,23 +1,57 @@
-import { useEffect } from "react"
 import Header from "../Header/Header"
 import Card from "../UI/Card/Card"
-import { useSelector } from "react-redux"
-import { Navigate } from "react-router";
+import Button from "../UI/Button/Button"
+import TeaProduct from "../Products/TeaProduct"
+import style from "./TeaShop.module.css"
+
+import { setUser } from "../../Store/Slices/UserSlice"
+
+import { useEffect,useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useNavigate } from "react-router";
 import { redirect } from "react-router";
 
 
 const TeaShop = ()=>{
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const isLoggedIn = localStorage.getItem("loggedIn")
+  
+  const [stateItems,setStateItems] = useState([])
+ 
+  useEffect(()=>{
+    const fetchItems = async()=>{
+      const response2 = await fetch("http://localhost:3000/teaItems",{
+        method: "get"
+      })
+      const json2 = await response2.json()
+      setStateItems(json2)
+    }
+    fetchItems()
+  },[])
+ const navigate = useNavigate()
+
+ const handleClick = (id)=>{
+     navigate(`/product/${id}`)
+  }
 
   return(
     <>
     <Header/>
       <Card>
-      {isLoggedIn&&<h1>Logged In</h1>}
       {!isLoggedIn&& <>
+      <p>not working</p>
         <h1>not Logged In</h1>
         <h2>Please click to log in or sign up</h2>
       </>}
+      {isLoggedIn&& <div className={style.gridHolder}>
+        {stateItems.map((item)=>{
+          return (
+            <div key={item.Id} className={style.gridItem}>
+              here
+              <TeaProduct name={item.teaName} description={item.teaDescription} price={item.Price}/>
+              <Button onClick={()=>{handleClick(item.Id)}} >More details</Button>
+            </div>)
+        })}
+      </div>}
       </Card>
     </>
   )

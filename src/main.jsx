@@ -8,6 +8,7 @@ import App from './App.jsx'
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import TeaShop from './components/shop/TeaShop.jsx';
+import ProjectDetails from './components/ProductDetails/ProductDetails.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/login' element={<Login/>}/>
           <Route path='/signUp' element={<SignUp/>} />
           <Route path='/products' element={<TeaShop/>}/>
+          <Route path='/product/:id' element={<ProjectDetails/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -15,18 +15,20 @@ export const UserSlice = createSlice({
        state.userName = action.payload.userName
        state.password = action.payload.password
        state.isLoggedIn = true
+       localStorage.setItem("user", action.payload.Id)
+       localStorage.setItem("loggedIn",true)
     },
-    setAddress : (state,action)=>{
-      return state.address = action.payload
-    },
+
     logOut: (state)=>{
+
+      state.id = 0
       state.userName = ''
       state.password = ''
       state.isLoggedIn = false
-      
+    
     }
   }
 })
 
-export const {setUser, setAddress, logOut} = UserSlice.actions
+export const {setUser, logOut} = UserSlice.actions
 export default UserSlice.reducer

@@ -7,6 +7,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx"
 
 import { showError } from "../../Store/Slices/ErrorSlice.js"
 import { setUser } from "../../Store/Slices/UserSlice.js"
+import { setItems } from "../../Store/Slices/ProductsSlice.js"
 
 import { useState,useRef } from "react"
 import { createPortal } from "react-dom"
@@ -18,7 +19,7 @@ import { useNavigate } from "react-router"
 
 
 const Login = ({})=>{
-  
+  const navigate = useNavigate()
   const userNameRef = useRef()
   const passwordRef = useRef()
   
@@ -55,7 +56,6 @@ const Login = ({})=>{
     //what should happen with no errors
     dispatch(setUser(json.user))
     navigate("/products")
-    
   }
 
 
