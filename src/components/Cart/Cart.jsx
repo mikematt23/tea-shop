@@ -55,8 +55,8 @@ const Cart = ({})=>{
             return <CartItem updateCart={updateCart} key={item.Id} id={item.Id} name={item.teaName} quantity = {item.quantity} price={item.Price}/>
           })}
         </div>
-        <Button isCancel={true} onClick={handleCartClose}>Close</Button>
         <Button onClick={handlePay}>Pay</Button>
+        <Button isCancel={true} onClick={handleCartClose}>Close</Button>
       </div>
     </div>
   )

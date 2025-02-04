@@ -7,12 +7,16 @@
     border-radius: 6px;
     box-shadow: 1px 3px 3px black;
     background-color: rgba(251, 173, 27, 0.927);
-    padding-left: 4rem;
-    padding-right: 4rem;
+    /* padding-left: 4rem;
+    padding-right: 4rem; */
     margin: 1rem;
 }
-
 .cartItem h3{
+     padding-left: 4rem;
+    padding-right: 4rem;
+}
+.buttonHolder{
+  display: flex;
 }
 .priceHolder{
   display: flex;

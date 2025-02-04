@@ -3,11 +3,14 @@ import Card from "../UI/Card/Card"
 import Button from "../UI/Button/Button"
 import Input from "../UI/Input/Input"
 import style from "./ProductDetails.module.css"
+import { useDispatch } from "react-redux"
 import { useParams } from "react-router"
 import { useEffect, useState, useRef } from "react"
+import { showCart } from "../../Store/Slices/CartSlice"
 
 
 const ProjectDetails = ()=>{
+   const dispatch = useDispatch()
    const {id} = useParams()
    const isLoggedIn = localStorage.getItem("loggedIn")
 
@@ -31,11 +34,11 @@ const ProjectDetails = ()=>{
     }
     fetchProduct()
    },[])
-   
    const handleAddToCart = (newItem,number)=>{
-      if(number === 0 || number === undefined){
-        number = 1
+      if(number === '' || number === undefined){
+         number = 1
       }
+      console.log(typeof number)
       let cart = JSON.parse(sessionStorage.getItem("cart")) 
       if(cart === null){
         const newCart = [{...newItem,quantity: number}]
@@ -43,7 +46,8 @@ const ProjectDetails = ()=>{
       }
       const addToArray = cart.find((item)=>{
         if(newItem.Id === item.Id){
-          item.quantity++
+          console.log(typeof item.quantity, typeof number)
+          item.quantity = Number(item.quantity) + Number(number)
           return item
         }
       })
@@ -51,6 +55,7 @@ const ProjectDetails = ()=>{
         cart.push({...newItem,quantity:number})
       }
       sessionStorage.setItem('cart', JSON.stringify(cart));
+      dispatch(showCart())
    }
 
    return(
@@ -62,7 +67,7 @@ const ProjectDetails = ()=>{
         <h3 className={style.h3}>{item.teaDescription}</h3>
         <div className={style.quantityHolder}>
           <Input isCartInput = {true} ref={quantityRef} type="number" placeHolder="Quantity"/>
-          <Button onClick={()=>{handleAddToCart(item,1)}}>Add To Cart</Button>
+          <Button onClick={()=>{handleAddToCart(item,quantityRef.current.value)}}>Add To Cart</Button>
         </div> 
       </Card>}
       {!isLoggedIn&& <Card>

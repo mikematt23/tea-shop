@@ -57,7 +57,12 @@
       height: 100%;
       width: 90%;
       margin-top:5rem;
+      margin: 2rem;
       padding-bottom: 4%;
+    }
+    .cartHolder{
+        height: 60%;
+    
     }
   }
   @media screen and (min-width:1700px){

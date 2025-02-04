@@ -59,7 +59,7 @@ const CartItem = ({name,price,quantity,id, updateCart,update})=>{
           </div>
           {!cantUpdate &&<div className={style.UiHolder}>
             <Input isCartInput ={true} ref={quantityRef} type="number" placeHolder = "Update Quanity"/>
-            <div>
+            <div className={style.buttonHolder}>
                 <Button onClick={()=>{handleUpdateQuanity(id)}}>Update Quanity</Button>
                 <Button isCancel={true} onClick={()=>{handleItemRemoval(id)}}>Remove</Button>
             </div>
