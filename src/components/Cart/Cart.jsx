@@ -48,12 +48,14 @@ const Cart = ({})=>{
     <div className={style.modal}>
       <div className={style.modalContainer}>
         <h1>Your Cart</h1>
-        {hasMessage && <p>Cart IS Empty! Want to add some teas</p>}
+        {hasMessage && <p>Cart Is Empty! Want to add some teas</p>}
         {!hasItems &&<p>Cart containt</p>}
-        {hasItems&& cartItems.map((item)=>{
-          return <CartItem updateCart={updateCart} key={item.Id} id={item.Id} name={item.teaName} quantity = {item.quantity} price={item.Price}/>
-        })}
-        <Button onClick={handleCartClose}>Close</Button>
+        <div className={style.cart}>
+          {hasItems&& cartItems.map((item)=>{
+            return <CartItem updateCart={updateCart} key={item.Id} id={item.Id} name={item.teaName} quantity = {item.quantity} price={item.Price}/>
+          })}
+        </div>
+        <Button isCancel={true} onClick={handleCartClose}>Close</Button>
         <Button onClick={handlePay}>Pay</Button>
       </div>
     </div>

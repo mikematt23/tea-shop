@@ -35,7 +35,7 @@ const Login = ({})=>{
       setMesage("You must enter a user name and password!")
       return dispatch(showError())
     }
-    const response = await fetch("http://localhost:3000/teaLogin",{
+    const response = await fetch("https://reashopnode-production.up.railway.app/teaLogin",{
       method:"post",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -68,7 +68,7 @@ const Login = ({})=>{
       <Header/>
       <Card>
         
-        <h2>Complete the form to Continue</h2>
+        <h2>Login To Continue</h2>
         <div className={style.inputHolder}>
           <Input ref={userNameRef} type="text" placeHolder="UserName"/>
           <Input ref={passwordRef} type="password" placeHolder="Password"/>

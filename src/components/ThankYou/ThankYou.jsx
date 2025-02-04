@@ -1,7 +1,11 @@
 import Header from "../Header/Header"
 import Card from "../UI/Card/Card"
+import { useEffect } from "react"
 
 const ThankYou  = ()=>{
+  useEffect(()=>{
+    sessionStorage.removeItem('cart')
+  },[])
    return(
     <>
       <Header/>

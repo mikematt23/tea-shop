@@ -10,7 +10,7 @@ const Input = forwardRef(({type,placeHolder, isCartInput},ref)=>{
   },[])
   return(
     <div className={style.inputHolder}>
-      <label  for={placeHolder}>{placeHolder}</label>
+      <label  htmlFor={placeHolder}>{placeHolder}</label>
       <input name={placeHolder} ref={ref} className={inputStyle} type = {type} placeholder={`Please enter your ${placeHolder}`}/>
     </div>
   )

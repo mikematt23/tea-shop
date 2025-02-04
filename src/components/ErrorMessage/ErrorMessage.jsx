@@ -15,7 +15,7 @@ const ErrorMessage = ({message})=>{
       <div className={style.modalContainer}>
         <h1>ERROR!</h1>
         <h3>{message}</h3>
-        <Button onClick={handleErrorClose}>Close</Button>
+        <Button isCancel={true} onClick={handleErrorClose}>Close</Button>
       </div>
     </div>
   )

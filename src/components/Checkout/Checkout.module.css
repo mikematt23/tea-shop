@@ -1,15 +1,68 @@
-.checkout{
-    width: 80%;
-    height: 50rem ;
+.holder{
+    height: 100%;
+    width: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;    
+    align-items: center;
+    background-color: rgba(251, 173, 27, 0.927);
+    margin: 3rem;
+    margin-top: 5rem;
     overflow: scroll;
+    border-radius: 6px;
+    text-align: center;
+}
+.holder::-webkit-scrollbar {
+    background: transparent; /* make scrollbar transparent */
+    width: 0px;
+}
+.holder p{
+    margin: 0px;
+    text-decoration: underline;
+}
+.holder h2{
+    margin :0px;
+}
+.cartHolder{
+    height: 40%;
+    overflow: scroll;
+}
+.cartHolder::-webkit-scrollbar {
+    background: transparent; /* make scrollbar transparent */
+    width: 0px;
+}
+
+.checkout{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    margin-left: 100%;
     padding: 10%;
     border-radius: 6px;
-} 
+    margin: 0px;
+}
+
+.checkout p{
+    text-decoration: none;
+}
 
 .checkout::-webkit-scrollbar {
     background: transparent; /* make scrollbar transparent */
     width: 0px;
 }
+@media (max-width: 700px) { 
+    .holder{
+      height: 100%;
+      width: 90%;
+      margin-top:5rem;
+      padding-bottom: 4%;
+    }
+  }
+  @media screen and (min-width:1700px){
+    .Card{
+      width: 50%;
+    }
+  }
+  

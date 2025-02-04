@@ -15,9 +15,50 @@ p{
 .modalContainer{
   background-color: #fefffe;
   margin: 10% auto;
-  height: 30%;
+  height: 50%;
   width: 50%;
   padding: 2%;
   border-radius: 6px;
   text-align: center;
+  
+}
+
+.cart{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60%;
+  overflow: scroll;
+  padding-bottom: 2%;
+  margin-bottom: 5%;
+  border-radius: 6px;
+}
+.cart::-webkit-scrollbar {
+  background: transparent; /* make scrollbar transparent */
+  width: 0px;
+}
+
+@media (max-width: 850px) {
+  .modalContainer{
+    background-color: #fefffe;
+    margin: 10% auto;
+    height: 85%;
+    width: 80%;
+    padding: 2%;
+    padding-bottom: 5%;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .cart{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    overflow: scroll;
+    padding-bottom: 2%;
+    margin-bottom: 5%;
+    border-radius: 6px;
+  }
 }

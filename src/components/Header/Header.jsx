@@ -17,8 +17,6 @@ const Header = ({})=>{
     dispatch(showCart())
   }
   const handleLogOut = ()=>{
-    localStorage.removeItem("user")
-    localStorage.removeItem("loggedIn")
     dispatch(logOut())
     navigate("/")
   }

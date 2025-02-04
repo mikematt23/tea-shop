@@ -24,7 +24,9 @@ export const UserSlice = createSlice({
       state.userName = ''
       state.password = ''
       state.isLoggedIn = false
-    
+      localStorage.removeItem("user")
+      localStorage.removeItem("loggedIn")
+      sessionStorage.removeItem('cart')
     }
   }
 })

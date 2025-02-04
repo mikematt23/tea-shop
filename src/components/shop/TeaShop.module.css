@@ -46,6 +46,14 @@
       
     }
  }
+ @media (max-width: 550px) {
+    .gridItem{
+        height: 60%;
+        width: 85%;
+        padding: 1.6rem;
+        padding-bottom: 2rem;
+    }
+ }
 
  @media (max-width: 500px) {
     .gridItem{

@@ -37,7 +37,7 @@ const SignUp = ()=>{
          setMesage("Password must Match")
          return dispatch(showError())
        }
-       const response = await fetch("http://localhost:3000/teaSignUp",{
+       const response = await fetch("https://reashopnode-production.up.railway.app/teaSignUp",{
          method:"post",
          headers:{
             "Content-type": "application/json"
@@ -66,7 +66,7 @@ const SignUp = ()=>{
         )}
         <Header/>
         <Card>
-          <h2>Please Complete the form</h2>
+          <h2>Sign Up to Continue</h2>
           <Input ref={userNameRef} type="text" placeHolder="User Name"/> 
           <Input ref={passwordRef} type="password" placeHolder="Password"/> 
           <Input ref={confirmPasswordRef} type="password" placeHolder="Confirm Password"/>

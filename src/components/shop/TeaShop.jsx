@@ -19,7 +19,7 @@ const TeaShop = ()=>{
  
   useEffect(()=>{
     const fetchItems = async()=>{
-      const response2 = await fetch("http://localhost:3000/teaItems",{
+      const response2 = await fetch("https://reashopnode-production.up.railway.app/teaItems",{
         method: "get"
       })
       const json2 = await response2.json()
@@ -49,7 +49,7 @@ const TeaShop = ()=>{
             <>
             <div key={item.Id} className={style.gridItem}>
               <TeaProduct id={item.Id} name={item.teaName} description={item.teaDescription} price={item.Price}/>
-              <Button onClick={()=>{handleClick(item.Id)}} >More details</Button>
+              <Button  onClick={()=>{handleClick(item.Id)}} >More details</Button>
             </div></>)
         })}
       </div>}

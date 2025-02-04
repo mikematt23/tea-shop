@@ -12,3 +12,14 @@
 .button:hover{
   box-shadow: 4px 2px 2px black;
 }
+
+.cancel{
+  border-radius: 6px;
+  height: 2rem;
+  width: 10rem;
+  background-color: rgba(253, 64, 64, 0.861);
+  margin: 8px;
+  box-shadow: 3px 1px 1px black;
+  font-family: "Oswald", serif;
+  font-weight: 300;
+}

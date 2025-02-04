@@ -22,7 +22,7 @@ const ProjectDetails = ()=>{
       setImgPath(image.default)
     })
     const fetchProduct = async ()=>{
-     const response = await fetch(`http://localhost:3000/teaItem/${id}`,{
+     const response = await fetch(`https://reashopnode-production.up.railway.app/teaItem/${id}`,{
         method: "get"
       })
       const json = await response.json()
