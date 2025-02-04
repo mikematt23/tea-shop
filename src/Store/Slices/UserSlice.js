@@ -13,7 +13,6 @@ export const UserSlice = createSlice({
     setUser : (state, action)=>{
        state.id = action.payload.Id
        state.userName = action.payload.userName
-       state.password = action.payload.password
        state.isLoggedIn = true
        localStorage.setItem("user", action.payload.Id)
        localStorage.setItem("loggedIn",true)

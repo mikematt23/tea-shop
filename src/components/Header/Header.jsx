@@ -24,28 +24,28 @@ const Header = ({})=>{
   }
   return(
     <header className={style.header}>
-      <h1>Tea Shop</h1>
+      <h1>Tea Time</h1>
       <nav>
         {!isLoggedIn&& <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link className={style.link} to="/">Home</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link className={style.link}  to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/signUp">Sign Up</Link>
+            <Link className={style.link}  to="/signUp">Sign Up</Link>
           </li>
         </ul>}
         {isLoggedIn&& <ul>
           <li onClick={handleCart}>
-            <p>Cart</p>
+            <Link className={style.link}>Cart</Link>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <Link className={style.link} to="/products">Products</Link>
           </li>
           <li onClick={handleLogOut}>
-           log out
+           <Link className={style.link}>Log Out</Link>
           </li>
         </ul>}
       </nav>

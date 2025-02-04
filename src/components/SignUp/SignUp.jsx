@@ -5,14 +5,17 @@ import Input from "../UI/Input/Input"
 import Button from "../UI/Button/Button"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 //react hooks
+import { useNavigate } from "react-router"
 import { useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { useDispatch, useSelector } from "react-redux"
 //redux state methods
 import { showError } from "../../Store/Slices/ErrorSlice"
+import { setUser } from "../../Store/Slices/UserSlice"
 
 const SignUp = ()=>{
     const dispatch = useDispatch()
+    const navigate= useNavigate()
     const error = useSelector(state => state.error.showError) 
     
     const userNameRef = useRef()
@@ -27,7 +30,6 @@ const SignUp = ()=>{
           passwordRef.current.value === '' ||
           confirmPasswordRef.current.value === ''
        ){
-        console.log("here")
         setMesage("The form Must be filled out")
         return dispatch(showError())
        }
@@ -46,10 +48,14 @@ const SignUp = ()=>{
          })
        })
        const json = await response.json()
-       if(json.error.message === "Duplicate entry 'test2' for key 'teaUser.userName_UNIQUE'"){
+       console.log(json)
+       console.log(json)
+       if(json.message === "not added"){
           setMesage("Already a user plaese login in to continue")
           return dispatch(showError())
        }
+       dispatch(setUser(json.user))
+       navigate("/products")
     }
 
     return(

@@ -1,10 +1,12 @@
 .button{
   border-radius: 6px;
+  height: 2rem;
   width: 10rem;
-  background-color: rgba(64, 253, 118, 0.285);
-  padding: .5rem;
-  margin: 3px;
+  background-color: rgba(64, 253, 118, 0.598);
+  margin: 8px;
   box-shadow: 3px 1px 1px black;
+  font-family: "Oswald", serif;
+  font-weight: 300;
 }
 
 .button:hover{

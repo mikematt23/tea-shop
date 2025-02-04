@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom"
+import Button from "../UI/Button/Button"
 import style from "./ErrorMessage.module.css"
 import { useDispatch } from "react-redux"
 import { closeError } from "../../Store/Slices/ErrorSlice"
@@ -12,7 +13,9 @@ const ErrorMessage = ({message})=>{
   return(
     <div onClick={handleErrorClose} className={style.modal}>
       <div className={style.modalContainer}>
-        <p>{message}</p>
+        <h1>ERROR!</h1>
+        <h3>{message}</h3>
+        <Button onClick={handleErrorClose}>Close</Button>
       </div>
     </div>
   )

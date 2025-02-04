@@ -42,14 +42,15 @@ const TeaShop = ()=>{
         <h1>not Logged In</h1>
         <h2>Please click to log in or sign up</h2>
       </>}
+      {isLoggedIn && <h3 className={style.h3}>Welcome to the Shop please browse around!</h3>}
       {isLoggedIn&& <div className={style.gridHolder}>
         {stateItems.map((item)=>{
           return (
+            <>
             <div key={item.Id} className={style.gridItem}>
-              here
-              <TeaProduct name={item.teaName} description={item.teaDescription} price={item.Price}/>
+              <TeaProduct id={item.Id} name={item.teaName} description={item.teaDescription} price={item.Price}/>
               <Button onClick={()=>{handleClick(item.Id)}} >More details</Button>
-            </div>)
+            </div></>)
         })}
       </div>}
       </Card>

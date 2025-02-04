@@ -1,5 +1,33 @@
+label{
+  font-family: "Oswald", serif;
+  font-weight: 300;
+}
 .input{
   padding:2px;
-  margin: .3rem;
   border-radius: 4px;
+  width: 40rem;
+  font-family: "Oswald", serif;
+}
+.inputHolder{
+  margin: .5rem;
+  display: flex;
+  flex-direction: column;
+}
+.cartInput{
+  padding:2px;
+  border-radius: 4px;
+  width: 8rem;
+  font-family: "Oswald", serif;
+}
+
+@media (max-width: 850px) {
+  .input{
+    width: 30rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .input{
+    width: 15rem;
+  }
 }

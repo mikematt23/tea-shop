@@ -1,0 +1,15 @@
+.checkout{
+    width: 80%;
+    height: 50rem ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: scroll;
+    padding: 10%;
+    border-radius: 6px;
+} 
+
+.checkout::-webkit-scrollbar {
+    background: transparent; /* make scrollbar transparent */
+    width: 0px;
+}

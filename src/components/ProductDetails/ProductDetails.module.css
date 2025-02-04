@@ -1,0 +1,16 @@
+.h3{
+    margin: 0px;
+}
+.img{
+    height: 50%;
+    border-radius: 6px;
+}
+.quantityHolder{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 0px;
+}
+.quantityHolder p{
+    padding: 2%;
+}

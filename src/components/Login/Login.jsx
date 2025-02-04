@@ -32,7 +32,7 @@ const Login = ({})=>{
     if(userNameRef.current.value === '' || 
         passwordRef.current.value === "")
     {
-      setMesage("You must enter a user name and password")
+      setMesage("You must enter a user name and password!")
       return dispatch(showError())
     }
     const response = await fetch("http://localhost:3000/teaLogin",{
@@ -46,11 +46,11 @@ const Login = ({})=>{
     const json = await response.json()
     //when errors occur 
     if(json.message === "No user"){
-      setMesage("No User Please Sgn Up to Continue")
+      setMesage("No User Please Sign Up to Continue")
       return dispatch(showError())
     }
     if(json.message === "Incorrect"){
-      setMesage("Password does not match our records")
+      setMesage("Password does not match our records!")
       return dispatch(showError())
     }
     //what should happen with no errors
@@ -67,7 +67,8 @@ const Login = ({})=>{
     )}
       <Header/>
       <Card>
-        <h2>Please Log in or sign up</h2>
+        
+        <h2>Complete the form to Continue</h2>
         <div className={style.inputHolder}>
           <Input ref={userNameRef} type="text" placeHolder="UserName"/>
           <Input ref={passwordRef} type="password" placeHolder="Password"/>

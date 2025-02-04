@@ -1,6 +1,8 @@
+.h3{
+  text-decoration: underline;
+}
 .gridHolder{
-    width: 70%;
-
+    width: 95%;
     display: grid;
     grid-template-columns: 50% 50%;
     overflow: scroll;
@@ -11,11 +13,45 @@
     padding: 1rem;
     width: 90%;
     border: 1px solid black;
+    border-radius: 6px;
     text-align: center;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.683);
 }
-
+.gridItem h3{
+    text-decoration: none;
+}
 
 .gridHolder::-webkit-scrollbar {
     background: transparent; /* make scrollbar transparent */
     width: 0px;
 }
+
+@media (max-width: 900px) {
+    .gridHolder{
+        width: 90%;
+        grid-template-columns: 100%;
+    }
+    .gridItem{
+        height: 60%;
+        width: 85%;
+        padding: 2.4rem;
+    }
+ }
+ 
+ @media (max-width: 714px) {
+    .gridItem{
+        height: 60%;
+        width: 85%;
+        padding: 2.2rem;
+      
+    }
+ }
+
+ @media (max-width: 500px) {
+    .gridItem{
+        height: 60%;
+        width: 85%;
+        padding: 1rem;
+        padding-bottom: 2rem;
+    }
+ }

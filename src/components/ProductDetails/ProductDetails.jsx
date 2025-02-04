@@ -1,15 +1,26 @@
 import Header from "../Header/Header"
 import Card from "../UI/Card/Card"
 import Button from "../UI/Button/Button"
+import Input from "../UI/Input/Input"
+import style from "./ProductDetails.module.css"
 import { useParams } from "react-router"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+
 
 const ProjectDetails = ()=>{
-  const isLoggedIn = localStorage.getItem("loggedIn")
-  const {id} = useParams()
-  const [item, setItem] = useState()
-  const [isLoading,setIsloading] = useState(true)
+   const {id} = useParams()
+   const isLoggedIn = localStorage.getItem("loggedIn")
+
+   const quantityRef = useRef()
+
+   const [imgPath,setImgPath] = useState()
+   const [item, setItem] = useState()
+   const [isLoading,setIsloading] = useState(true)
+
    useEffect(()=>{
+    import(`../../assets/teaShop/${id}.webp`).then((image)=>{
+      setImgPath(image.default)
+    })
     const fetchProduct = async ()=>{
      const response = await fetch(`http://localhost:3000/teaItem/${id}`,{
         method: "get"
@@ -22,6 +33,9 @@ const ProjectDetails = ()=>{
    },[])
    
    const handleAddToCart = (newItem,number)=>{
+      if(number === 0 || number === undefined){
+        number = 1
+      }
       let cart = JSON.parse(sessionStorage.getItem("cart")) 
       if(cart === null){
         const newCart = [{...newItem,quantity: number}]
@@ -30,25 +44,26 @@ const ProjectDetails = ()=>{
       const addToArray = cart.find((item)=>{
         if(newItem.Id === item.Id){
           item.quantity++
-          return true
+          return item
         }
       })
       if(addToArray === undefined){
         cart.push({...newItem,quantity:number})
       }
- 
       sessionStorage.setItem('cart', JSON.stringify(cart));
-      console.log(cart)
    }
 
    return(
     <>
     <Header/>
       {isLoggedIn&& !isLoading &&<Card>
-        <h1>{item.teaName}</h1>
-        <h2>{item.teaDescription}</h2>
-        <p>${item.Price}</p>
-        <Button onClick={()=>{handleAddToCart(item,1)}}>Add To Cart</Button>
+        <h2>{item.teaName}</h2>
+        <img className={style.img} src={imgPath} />
+        <h3 className={style.h3}>{item.teaDescription}</h3>
+        <div className={style.quantityHolder}>
+          <Input isCartInput = {true} ref={quantityRef} type="number" placeHolder="Quantity"/>
+          <Button onClick={()=>{handleAddToCart(item,1)}}>Add To Cart</Button>
+        </div> 
       </Card>}
       {!isLoggedIn&& <Card>
         <h1>not Logged In</h1>

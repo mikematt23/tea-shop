@@ -1,9 +1,18 @@
-import { useRef, forwardRef } from "react"
+import { forwardRef, useState, useEffect } from "react"
 import style from "./Input.module.css"
 
-const Input = forwardRef(({type,placeHolder},ref)=>{
+const Input = forwardRef(({type,placeHolder, isCartInput},ref)=>{
+  const [inputStyle, setInputStyle] = useState(style.input)
+  useEffect(()=>{
+    if(isCartInput){
+      setInputStyle(style.cartInput)
+    }
+  },[])
   return(
-    <input ref={ref} className={style.input} type = {type} placeholder={placeHolder}/>
+    <div className={style.inputHolder}>
+      <label  for={placeHolder}>{placeHolder}</label>
+      <input name={placeHolder} ref={ref} className={inputStyle} type = {type} placeholder={`Please enter your ${placeHolder}`}/>
+    </div>
   )
 })
 
