@@ -1,7 +1,7 @@
 import { forwardRef, useState, useEffect } from "react"
 import style from "./Input.module.css"
 
-const Input = forwardRef(({type,placeHolder, isCartInput},ref)=>{
+const Input = forwardRef(({type,name,placeHolder, isCartInput},ref)=>{
   const [inputStyle, setInputStyle] = useState(style.input)
   useEffect(()=>{
     if(isCartInput){
@@ -10,8 +10,8 @@ const Input = forwardRef(({type,placeHolder, isCartInput},ref)=>{
   },[])
   return(
     <div className={style.inputHolder}>
-      <label  htmlFor={placeHolder}>{placeHolder}</label>
-      <input name={placeHolder} ref={ref} className={inputStyle} type = {type} placeholder={`Please enter your ${placeHolder}`}/>
+      <label  htmlFor={name}>{name}</label>
+      <input name={name} ref={ref} className={inputStyle} type = {type} placeholder={`${placeHolder}`}/>
     </div>
   )
 })

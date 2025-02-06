@@ -70,8 +70,8 @@ const Login = ({})=>{
         
         <h2>Login To Continue</h2>
         <div className={style.inputHolder}>
-          <Input ref={userNameRef} type="text" placeHolder="UserName"/>
-          <Input ref={passwordRef} type="password" placeHolder="Password"/>
+          <Input name="User Name" ref={userNameRef} type="text" placeHolder="UserName"/>
+          <Input name="Password" ref={passwordRef} type="password" placeHolder="Password"/>
         </div>
         <div className={style.buttonHolder}>
           <Button onClick={handleLogIn}>Login</Button>

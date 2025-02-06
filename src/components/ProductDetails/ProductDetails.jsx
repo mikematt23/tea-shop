@@ -66,7 +66,7 @@ const ProjectDetails = ()=>{
         <img className={style.img} src={imgPath} />
         <h3 className={style.h3}>{item.teaDescription}</h3>
         <div className={style.quantityHolder}>
-          <Input isCartInput = {true} ref={quantityRef} type="number" placeHolder="Quantity"/>
+          <Input name="Quantity" isCartInput = {true} ref={quantityRef} type="number" placeHolder="Quantity"/>
           <Button onClick={()=>{handleAddToCart(item,quantityRef.current.value)}}>Add To Cart</Button>
         </div> 
       </Card>}

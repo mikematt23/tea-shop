@@ -52,13 +52,13 @@ const CartItem = ({name,price,quantity,id, updateCart,update})=>{
         <div className={style.cartItem}>
           {hasMessage && <h4>quantity Cant be zero</h4>}
           <h3>{name}</h3>
-          {!cantUpdate&&<Button onClick={()=>{hnadleMoreDetails(id)}}>More Detials</Button>}
+          {!cantUpdate&&<Button onClick={()=>{hnadleMoreDetails(id)}}>More Details</Button>}
           <div className={style.priceHolder}> 
             {!cantUpdate &&<h5>For one: ${price}</h5>}
             <h4>Total {quantity}: ${price*quantity}.00</h4>
           </div>
           {!cantUpdate &&<div className={style.UiHolder}>
-            <Input isCartInput ={true} ref={quantityRef} type="number" placeHolder = "Update Quanity"/>
+            <Input name="Update Quantity" isCartInput ={true} ref={quantityRef} type="number" placeHolder = "Update Quanity"/>
             <div className={style.buttonHolder}>
                 <Button onClick={()=>{handleUpdateQuanity(id)}}>Update Quanity</Button>
                 <Button isCancel={true} onClick={()=>{handleItemRemoval(id)}}>Remove</Button>

@@ -38,7 +38,6 @@ const TeaShop = ()=>{
     <Header/>
       <Card>
       {!isLoggedIn&& <>
-      <p>not working</p>
         <h1>not Logged In</h1>
         <h2>Please click to log in or sign up</h2>
       </>}
@@ -49,7 +48,7 @@ const TeaShop = ()=>{
             <>
             <div key={item.Id} className={style.gridItem}>
               <TeaProduct id={item.Id} name={item.teaName} description={item.teaDescription} price={item.Price}/>
-              <Button  onClick={()=>{handleClick(item.Id)}} >More details</Button>
+              <Button  onClick={()=>{handleClick(item.Id)}} >More Details</Button>
             </div></>)
         })}
       </div>}

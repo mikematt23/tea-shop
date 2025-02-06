@@ -48,8 +48,6 @@ const SignUp = ()=>{
          })
        })
        const json = await response.json()
-       console.log(json)
-       console.log(json)
        if(json.message === "not added"){
           setMesage("Already a user plaese login in to continue")
           return dispatch(showError())
@@ -67,9 +65,9 @@ const SignUp = ()=>{
         <Header/>
         <Card>
           <h2>Sign Up to Continue</h2>
-          <Input ref={userNameRef} type="text" placeHolder="User Name"/> 
-          <Input ref={passwordRef} type="password" placeHolder="Password"/> 
-          <Input ref={confirmPasswordRef} type="password" placeHolder="Confirm Password"/>
+          <Input name="User Name" ref={userNameRef} type="text" placeHolder="Please Enter A User Name"/> 
+          <Input name="Password" ref={passwordRef} type="password" placeHolder="Please Enter A Password"/> 
+          <Input name="Confirm Password" ref={confirmPasswordRef} type="password" placeHolder="Please Confirm Your Password"/>
           <Button onClick={handleFormSubmit}>Submit</Button>       
         </Card>
       </>
